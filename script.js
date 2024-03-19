@@ -1,29 +1,25 @@
-/**function getComputerChoice() {
+function getComputerChoice() {
     const choices = ['Rock', 'Paper', 'Scissor'];
     const randomNumber = Math.floor(Math.random() * 3);
-    return choices[randomNumber];
-}*/
+    return choices[randomNumber].toLowerCase();
+}
 
 
 
-function playRound(playerSelection, computerSelection) {
-
+function playRound(playerSelection) {
+    const computerChoice = getComputerChoice().toLowerCase();
     const playerChoice = playerSelection.toLowerCase();
-    const computerChoice = computerSelection.toLowerCase();
-
+    console.log(`The computer chose: ${computerChoice}`);
     if (playerChoice === computerChoice) {
         return `It's a tie! Both players chose ${playerChoice}`;
-    }
-
-    else if (
+    } else if (
         (playerChoice === 'rock' && computerChoice === 'scissors') ||
-        (playerChoice === 'scissors' && computerChoice === 'paper') ||
-        (playerChoice === 'paper' && computerChoice === 'rock')
+        (playerChoice === 'paper' && computerChoice === 'rock') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper')
     ) {
-        return `You win! ${playerChoice} beats ${computerChoice}`
-    }
-    else {
-        return `You lose! ${computerChoice} beats ${playerChoice}`
+        return `You win! ${capitalizeFirstLetter(playerChoice)} beats ${capitalizeFirstLetter(computerChoice)}`;
+    } else {
+        return `You lose! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(playerChoice)}`;
     }
 }
 
@@ -32,6 +28,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const playerSelection = "Rock";
-const computerSelection = "Scissor";
-console.log(playRound(playerSelection, computerSelection));
+
+const playerSelection = prompt("Choose Rock, Paper, or Scissors:"); 
+
+console.log(playRound(playerSelection));
