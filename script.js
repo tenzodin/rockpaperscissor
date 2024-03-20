@@ -1,7 +1,7 @@
 function getComputerChoice() {
     const choices = ['Rock', 'Paper', 'Scissor'];
     const randomNumber = Math.floor(Math.random() * 3);
-    return choices[randomNumber].toLowerCase();
+    return choices[randomNumber];
 }
 
 
@@ -9,6 +9,7 @@ function getComputerChoice() {
 function playRound(playerSelection) {
     const computerChoice = getComputerChoice().toLowerCase();
     const playerChoice = playerSelection.toLowerCase();
+    console.log(`You chose: ${playerChoice}`);
     console.log(`The computer chose: ${computerChoice}`);
     if (playerChoice === computerChoice) {
         return `It's a tie! Both players chose ${playerChoice}`;
@@ -30,5 +31,4 @@ function capitalizeFirstLetter(string) {
 
 
 const playerSelection = prompt("Choose Rock, Paper, or Scissors:"); 
-
 console.log(playRound(playerSelection));
